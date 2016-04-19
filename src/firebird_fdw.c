@@ -1030,14 +1030,14 @@ firebirdIterateForeignScan(ForeignScanState *node)
             continue;
         }
 
-        if(FQgetisnull(fdw_state->result, fdw_state->row, field_nr))
+        if(FQgetisnull(fdw_state->result, fdw_state->row, pg_field_nr))
         {
             elog(DEBUG2, " retrieved value (%i): NULL", pg_field_nr);
             values[pg_field_nr] = NULL;
         }
         else
         {
-            values[pg_field_nr] = FQgetvalue(fdw_state->result, fdw_state->row, field_nr);
+            values[pg_field_nr] = FQgetvalue(fdw_state->result, fdw_state->row, pg_field_nr);
             elog(DEBUG2, " retrieved value (%i): %s", pg_field_nr, values[pg_field_nr]);
         }
 
